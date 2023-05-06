@@ -172,27 +172,64 @@ int main() {
 		if(opcion == 2 && !baseDeDatosLlena){
 			cout << "No haz rellenado la base de datos\n";
 		} else if (opcion == 2 && baseDeDatosLlena){
+			volverAJugar == true;
 			while(volverAJugar){
 				if (idioma == 2) {
-					srand(time(0));
 					
 					int numPalabras = sizeof(palabrasIngles) / sizeof(palabrasIngles[0]);
 					int indiceAleatorio = rand() % numPalabras;
 					jugarAhorcado(palabrasIngles[indiceAleatorio], idioma);
 				} else {
-					srand(time(0));
 					
 					int numPalabras = sizeof(palabrasSpanish) / sizeof(palabrasSpanish[0]);
 					int indiceAleatorio = rand() % numPalabras;
 					jugarAhorcado(palabrasSpanish[indiceAleatorio], idioma);
 				}
 				int opcion;
-				cout<<"Quieres volver a jugar? (1. si - 2. no)";
+				cout<<"Quieres volver a jugar? (1. si - 2. no): ";
 				cin>>opcion;
 				if(opcion == 2 ){
 					volverAJugar = false;
 				}
 			}
+		}
+		
+		if(opcion == 3 ){
+			string jugador1;
+			string jugador2;
+			string palabra;
+			
+			if(idioma == 1){
+			cout << "Digite el nombre del jugador 1: ";
+			cin >> jugador1;
+			cout << "Digite el nombre del jugador 2: ";
+			cin >> jugador2;
+			cout << jugador1<< " , escribe una palabra para que "<< jugador2 << " adivine: ";
+			cin >> palabra;
+			} else{
+				cout << "Enter the name of player 1: ";
+				cin >> jugador1;
+				cout << "Enter the name of player 2: ";
+				cin >> jugador2;
+				cout << "Player 1, write a word for player 2 to guess: ";
+				cin >> palabra;
+			}
+			system("cls");
+			
+			volverAJugar == true;
+			while(volverAJugar){
+				jugarAhorcado(palabra, idioma);
+				int opcion;
+				cout<<"Quieres volver a jugar? (1. si - 2. no): ";
+				cin>>opcion;
+				if(opcion == 2 ){
+					volverAJugar = false;
+				}
+			}
+		}
+		
+		if(opcion == 4){
+			salir = true;
 		}
 	}
 	
